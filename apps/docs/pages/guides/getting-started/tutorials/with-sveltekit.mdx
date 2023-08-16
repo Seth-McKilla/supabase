@@ -91,7 +91,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 }
 ```
 
-If you are using TypeScript the compiler might complain about `event.locals.supabase` and `event.locals.getSession`, this can be fixed by updating your `src/app.d.ts` with the content below:
+If you're using Typescript, the compiler might complain that your environment variables are not exported by $env/static/public. To fix this simply run the following command which uses `svelte-kit sync` to automatically create a type file based on your environment variables:
+
+```bash
+npm run check
+```
+
+The TypeScript compiler might also complain about `event.locals.supabase` and `event.locals.getSession`, this can be fixed by updating your `src/app.d.ts` with the content below:
 
 ```ts src/app.d.ts
 // src/app.d.ts
